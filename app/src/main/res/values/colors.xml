@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="darkBgColor">#cf5b4d</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="gray">#808080</color>
+    <color name="lightgray">#989898</color>
+    <color name="silver">#C0C0C0</color>
+    <color name="line_gray">#d9d9d9</color>
+
+    <color name="transparency">#00000000</color>
+    <color name="translucent_80">#80000000</color>
+    <color name="translucent_70">#70000000</color>
+
+    <color name="mainBgColor">#f66c5b</color>
+    <color name="blackBgColor">#494c51</color>
+    <color name="tour_filter_bg">#f0f0f0</color>
+    <color name="subBgColor">#cf5b4d</color>
+    <color name="subBgColor2">#ae4c40</color>
+    <color name="subBgColor3">#ececec</color>
+    <color name="subBgColor4">#f66d5b</color>
+    <color name="subTextColor">#F39D92</color>
+    <color name="mainTextColor">#894040</color>
+    <color name="innerTextColor">#3f3c3b</color>
+    <color name="innerTagColor">#f66c5b</color>
+    <color name="detailCommentMenuBgColor">#F3F3F3</color>
+    <color name="mainListViewDividerColor">#EFF0F2</color>
+    <color name="Translucent_88">#80000000</color>
+    <color name="Translucent_70">#70000000</color>
+    <color name="title_background">#1c1c1c</color>
+    <color name="title_text">#ffff00</color>
+
+    <color name="dot_inactive">#f66c5b</color>
+    <color name="dot_active">#F39D92</color>
+
+</resources>

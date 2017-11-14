@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.kocapplication.pixeleye.kockocapp">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
+    <!--핸드폰 내장 데이터 읽고 쓰기-->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+
+    <application
+        android:name=".util.GlobalApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/app_icon"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <!-- 페이스북 debug key -->
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_key" />
+
+        <!-- 카카오톡 debug key -->
+        <meta-data
+            android:name="com.kakao.sdk.AppKey"
+            android:value="@string/kakao_app_id" />
+
+        <activity
+            android:name=".intro.IntroActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="kakaolink"
+                    android:scheme="kakao677998a98a447b3f9746ae205b85eb73" />
+
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".login.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".login.JoinActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".login.GetExtraInfoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".login.Kakao.KakaoSignupActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".detail.DetailActivity"
+            android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".detail.scrapuser.ScrapUserActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".main.MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".main.AdviceActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".main.myKockoc.scrap.ScrapActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".main.search.SearchActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".main.search.SearchBoardActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".main.myKockoc.neighbor.NeighborActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".main.myKockoc.course.CourseActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".write.course.CourseMemoActivity"
+            android:theme="@android:style/Theme.Dialog" />
+
+        <activity
+            android:name=".user.UserActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".navigation.SettingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".navigation.PasswordChangeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".navigation.notice.NoticeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".navigation.NicknameChangeActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysVisible|adjustResize" />
+
+        <activity
+            android:name=".write.newWrite.NewWriteActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".util.FilePopUp"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".write.newWrite.map.MapActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
+        <activity
+            android:name=".write.course.CourseTitleActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".write.course.CourseWriteActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".write.course.AlarmDialogActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Transparent" />
+        <activity
+            android:name=".write.continuousWrite.CourseSelectActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".main.tour.FilterActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".main.tour.TourDetailActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".main.course.CourseDetailActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".beaconlist"
+            android:screenOrientation="portrait"/>
+
+
+        <!-- 네이버 로그인-->
+        <activity
+            android:name="com.nhn.android.naverlogin.ui.OAuthLoginActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.nhn.android.naverlogin.ui.OAuthLoginInAppBrowserActivity"
+            android:label="OAuth2.0 In-app"
+            android:screenOrientation="portrait" />
+        <!-- 페이스북 로그인 -->
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:screenOrientation="portrait" />
+
+        <service
+            android:name=".util.GCM.MyInstanceIDListenerService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        <service
+            android:name=".util.GCM.MyFcmListenerService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service
+            android:name=".background"
+            android:exported="true"
+            android:enabled="true"/>
+
+    </application>
+
+</manifest>

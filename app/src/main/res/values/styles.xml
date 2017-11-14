@@ -1,0 +1,75 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryDark">@color/blackBgColor</item>
+        <item name="colorAccent">@color/black</item>
+    </style>
+
+    <style name="NavigationItemFont">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">100sp</item>
+    </style>
+
+    <style name="MIP_theme" parent="AppTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.Transparent" parent="Theme.AppCompat.NoActionBar" >
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="CustomRadioButton_big" parent="@android:style/Widget.CompoundButton.RadioButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/tour_filter_item_big</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:button">@color/transparent</item>
+        <item name="android:textColor">@color/tour_filter_text</item>
+        <item name="android:textColorHighlight">@color/tour_filter_text</item>
+        <item name="android:textColorLink">@color/tour_filter_text</item>
+    </style>
+
+    <style name="CustomRadioButton_small" parent="@android:style/Widget.CompoundButton.RadioButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/tour_filter_item_small</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:button">@color/transparent</item>
+        <item name="android:textColor">@color/tour_filter_text</item>
+        <item name="android:textColorHighlight">@color/tour_filter_text</item>
+        <item name="android:textColorLink">@color/tour_filter_text</item>
+    </style>
+
+    <style name="Main_frag_content_title">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textSize">17dp</item>
+        <item name="android:textColor">@color/mainBgColor</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginStart">5dp</item>
+    </style>
+
+    <style name="Base.Widget.Design.TabLayout" parent="android:Widget">
+        <item name="tabIndicatorColor">@color/subBgColor4</item>
+        <item name="tabIndicatorHeight">2dp</item>
+        <item name="android:background">@color/blackBgColor</item>
+        <item name="tabTextAppearance">@style/TextAppearance.Design.Tab</item>
+        <item name="tabSelectedTextColor">?android:textColorPrimary</item>
+    </style>
+
+</resources>
