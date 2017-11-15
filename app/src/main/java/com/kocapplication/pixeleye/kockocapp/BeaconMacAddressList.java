@@ -11,10 +11,8 @@ package com.kocapplication.pixeleye.kockocapp;
 public class BeaconMacAddressList {
     private String[] macAddresses = {
             "[FE:13:2F:DA:80:9B]"
-            ,"[CB:EA:1A:C8:FD:9D]"
             ,"[D8:C0:D1:26:78:BE]"
-            ,"[F4:C8:C6:4D:ED:A4]"
-            ,"[F3:AA:45:96:EB:D6]"
+            ,"[DB:55:D5:41:27:98]"
     };
 
     private static BeaconMacAddressList instance;

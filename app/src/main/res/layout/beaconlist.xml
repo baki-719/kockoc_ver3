@@ -22,7 +22,8 @@
         android:layout_toEndOf="@+id/first_image"
         android:gravity="center"
         android:text="asdf"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:visibility="visible"/>
 
     <ImageView
         android:id="@+id/second_image"

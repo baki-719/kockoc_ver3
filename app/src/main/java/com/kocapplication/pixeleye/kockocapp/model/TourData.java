@@ -15,6 +15,7 @@ public class TourData implements Serializable{
     private String latitude; //위도
     private String contentID; // 콘텐츠 ID
     private String contentTypeId; // 콘텐츠 타입 ID
+    private String overview; //개요
 
     public String getTitle() {
         return title;
@@ -86,5 +87,17 @@ public class TourData implements Serializable{
 
     public void setContentTypeId(String contentTypeId) {
         this.contentTypeId = contentTypeId;
+    }
+
+    public String getOverview() {
+        return overview;
+    }
+
+    public void setOverview(String overview) {
+        this.overview = overview;
+    }
+
+    public String toString(){
+        return "TourData : "+getTitle();
     }
 }

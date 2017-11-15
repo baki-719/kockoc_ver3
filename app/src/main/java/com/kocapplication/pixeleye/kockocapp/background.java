@@ -6,6 +6,7 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.support.v7.app.NotificationCompat;
@@ -78,7 +79,7 @@ public class background extends Service {
             @Override
             public void onServiceReady() {
                 beaconManager.startEddystoneScanning();
-                beaconManager.setBackgroundScanPeriod(5000, 5000);
+                beaconManager.setBackgroundScanPeriod(10000, 5000);
                 beaconManager.setForegroundScanPeriod(5000, 5000);
             }
         });
@@ -143,16 +144,12 @@ public class background extends Service {
 
 
     public void showNotification(String title, String message, ArrayList<CustomUrl> urls) { // 팝업 띄우기
-        Intent notifyIntent = new Intent(this, beaconlist.class);
-
-        for (int i = 0 ; i<urls.size() ; i++) {
-            Log.d(TAG, "urlLIst : " + urls.get(i).getUrl());
-        }
+        Intent notifyIntent = new Intent(background.this, beaconlist.class);
         notifyIntent.putExtra("urlList", urls);
 
         PendingIntent intent = PendingIntent.getActivity(
                 background.this, 0,
-                notifyIntent, 0);
+                notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
         builder.setSmallIcon(android.R.drawable.ic_dialog_info);
@@ -165,6 +162,8 @@ public class background extends Service {
 
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(1, builder.build());
+
+
     }
 
 

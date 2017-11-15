@@ -3,16 +3,23 @@ package com.kocapplication.pixeleye.kockocapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.estimote.sdk.BeaconManager;
 import com.estimote.sdk.eddystone.Eddystone;
+import com.kocapplication.pixeleye.kockocapp.model.TourData;
 
 import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.http.GET;
 
 /**
  * Created by hp on 2017-11-07.
@@ -21,6 +28,8 @@ import java.util.ArrayList;
 public class beaconlist extends AppCompatActivity {
 
     private static final String TAG = "beaconlist";
+
+    private TourData item;
 
     private ArrayList<CustomUrl> urls = new ArrayList<CustomUrl>();
     private BeaconManager beaconManager;
@@ -39,6 +48,7 @@ public class beaconlist extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.beaconlist);
         first_image = (ImageView) findViewById(R.id.first_image);
         second_image = (ImageView) findViewById(R.id.second_image);
         third_image = (ImageView) findViewById(R.id.third_image);
@@ -49,11 +59,28 @@ public class beaconlist extends AppCompatActivity {
     }
 
     private void init_(){
-        stopService(new Intent(getApplicationContext(), beaconlist.class));
         urls = (ArrayList<CustomUrl>) getIntent().getSerializableExtra("urlList");
-        for(int i = 0 ; i < urls.size(); i++) Log.d(TAG, urls.get(i).getUrl());
-        // TODO: 2017-11-14 url받아온걸로 통신하여 response받아온 데이터 핸들링 하여야함 (http통신으로 Retrofit을 쓰는게 좋을듯 함)
+        // TODO: 2017-11-14 url 받아온걸로 통신하여 response 받아온 데이터 핸들링 하여야함 (http통신으로 Retrofit을 쓰는게 좋을듯 함)
+        Log.d(TAG, "urlsSize : " + urls.size());
+        Handler handler = new BeaconTourDataReceiveHandler();
+        Thread thread = new BeaconTourAPIThread(this,urls.get(0).getUrl(), handler);
+        thread.start();
     }
+
+    private class BeaconTourDataReceiveHandler extends Handler {
+        @Override
+        public void handleMessage(Message msg){
+            super.handleMessage(msg);
+            item = (TourData) msg.getData().getSerializable("THREAD");
+
+            Log.d(TAG, item.getImg());
+
+            first_text.setText(item.getTitle());
+            Glide.with(getApplicationContext()).load(item.getImg()).into(first_image);
+
+        }
+    }
+
 
 
 
