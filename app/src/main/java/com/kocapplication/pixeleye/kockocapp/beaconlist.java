@@ -1,7 +1,6 @@
 package com.kocapplication.pixeleye.kockocapp;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -17,9 +16,6 @@ import com.estimote.sdk.eddystone.Eddystone;
 import com.kocapplication.pixeleye.kockocapp.model.TourData;
 
 import java.util.ArrayList;
-
-import retrofit2.Call;
-import retrofit2.http.GET;
 
 /**
  * Created by hp on 2017-11-07.

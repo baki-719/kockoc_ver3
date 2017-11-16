@@ -35,14 +35,12 @@ public class background extends Service {
     public int[] flag = new int[]{0, 0, 0, 0, 0};
 
 
-    public Region region_kbg = new Region("경복궁", UUID.fromString("B9407F30-F5F8-466E-AFF9-25556B57FE6D"), 42117, 6064); // Location1
-
 
     @Override
     public void onCreate() {
         super.onCreate();
         Log.i("background", "start");
-        init();
+        scanTheBeacon();
     }
 
     @Nullable
@@ -71,19 +69,12 @@ public class background extends Service {
     }
 
 
-    public void init() {
+    private void scanTheBeacon() {
         myEddystone = new ArrayList<Eddystone>();
         beaconManager = new BeaconManager(getApplicationContext());
 
-        beaconManager.connect(new BeaconManager.ServiceReadyCallback() {
-            @Override
-            public void onServiceReady() {
-                beaconManager.startEddystoneScanning();
-                beaconManager.setBackgroundScanPeriod(10000, 5000);
-                beaconManager.setForegroundScanPeriod(5000, 5000);
-            }
-        });
-
+        beaconManagerConnect();
+        // TODO: 2017-11-16 http://developer.estimote.com/managing-beacons/connecting-to-beacons/#android 참고
         //// TODO: 2017-11-14 eddystone을 백그라운드로 돌림 왜 되는지는 모름
         beaconManager.setEddystoneListener(new BeaconManager.EddystoneListener() {
             @Override
@@ -91,55 +82,31 @@ public class background extends Service {
                 myEddystone = (ArrayList<Eddystone>) list;
                 ArrayList<CustomUrl> urls = new ArrayList<CustomUrl>();
                 for (int i = 0; i < myEddystone.size(); i++) {
+                    Log.d(TAG, "scaned beacon :" + list.get(i).url);
                     for (int j = 0; j < BeaconMacAddressList.getInstance().getMacAddresses().length; j++) {
-                        if (myEddystone.get(i).macAddress.toString().equals(BeaconMacAddressList.getInstance().getMacAddresses()[j])){
+                        if (myEddystone.get(i).macAddress.toString().equals(BeaconMacAddressList.getInstance().getMacAddresses()[j])) {
                             urls.add(new CustomUrl(myEddystone.get(i).url));
-                            break;
+                            Log.d(TAG, "detecting count : "+ String.valueOf(urls.size()));
                         }
                     }
                 }
-                if(urls.size() != 0)  showNotification("주변에 비콘이 있습니다.", "비콘 목록을 조회하시겠습니까?", urls);
-                beaconManager.disconnect();
-//                for (Eddystone eddystone : list) {
-//                    if (myEddystone.size() == 0) myEddystone.add(eddystone);
-//                    else if (myEddystone.size() > 0) {
-//                        for (int i = 0; i < myEddystone.size(); i++) {
-//                            if (myEddystone.get(i).macAddress.toString() == BeaconMacAddressList.getInstance().getMacAddresses()[0]) {
-//                                showNotification("주변에 비콘이 있습니다.", "비콘 목록을 조회하시겠습니까?", (ArrayList<Eddystone>) list);
-//                                Log.i("background", "비콘 인식");
-//                            }
-//                        }
-//                    }
-//                }
+                if (urls.size() != 0) showNotification("주변에 비콘이 있습니다.", "비콘 목록을 조회하시겠습니까?", urls);
+                else {
+                }
             }
-
         });
 
+    }
 
-//        beaconManager.connect(new BeaconManager.ServiceReadyCallback(){
-//            public void onServiceReady(){
-//                beaconManager.startMonitoring(region_kbg);
-//                beaconManager.setBackgroundScanPeriod(5000, 5000);
-//                beaconManager.setForegroundScanPeriod(5000, 5000);
-//            }
-//        });
-//        beaconManager.setMonitoringListener(new BeaconManager.MonitoringListener() {
-//            @Override
-//            public void onEnteredRegion(Region region, List<Beacon> list) {
-//                for(int i=0;i<list.size();i++){
-//                    if(region.getIdentifier().equals((region_kbg.getIdentifier()))){
-//                        showNotification("주변에 비콘이 있습니다.", "비콘 목록을 조회하시겠습니까?");
-//                        Log.i("background", "비콘 인식");
-//                    }
-//                }
-//            }
-//
-//            @Override
-//            public void onExitedRegion(Region region) {
-//
-//            }
-//        });
-
+    private void beaconManagerConnect(){
+        beaconManager.connect(new BeaconManager.ServiceReadyCallback() {
+            @Override
+            public void onServiceReady() {
+                beaconManager.startEddystoneScanning();
+                beaconManager.setBackgroundScanPeriod(10000, 0);
+                beaconManager.setForegroundScanPeriod(10000, 0);
+            }
+        });
     }
 
 
@@ -157,13 +124,12 @@ public class background extends Service {
         builder.setContentText(message);
         builder.setAutoCancel(true);
         builder.setContentIntent(intent);
-        builder.setDefaults(Notification.DEFAULT_ALL);
+        builder.setDefaults(Notification.DEFAULT_LIGHTS);
 
 
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(1, builder.build());
-
-
+        scanTheBeacon();
     }
 
 
