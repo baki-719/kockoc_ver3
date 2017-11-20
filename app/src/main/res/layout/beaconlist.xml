@@ -1,74 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-    <ImageView
-        android:id="@+id/first_image"
-        android:layout_width="114dp"
-        android:layout_height="125dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:src="@drawable/app_icon" />
-
-
-    <TextView
-        android:id="@+id/first_text"
-        android:layout_width="75dp"
-        android:layout_height="120dp"
-        android:layout_alignBottom="@+id/first_image"
-        android:layout_alignEnd="@+id/second_text"
-        android:layout_toEndOf="@+id/first_image"
-        android:gravity="center"
-        android:text="asdf"
-        android:textSize="20dp"
-        android:visibility="visible"/>
-
-    <ImageView
-        android:id="@+id/second_image"
-        android:layout_width="114dp"
-        android:layout_height="125dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignTop="@+id/second_text"
-        android:src="@drawable/app_icon" />
-
-
-    <TextView
-        android:id="@+id/second_text"
-        android:layout_width="269dp"
-        android:layout_height="120dp"
-        android:layout_below="@+id/first_image"
-        android:layout_marginTop="18dp"
-        android:layout_toEndOf="@+id/first_image"
-        android:gravity="center"
-        android:text="asdf"
-        android:textSize="20dp" />
-
-    <ImageView
-        android:id="@+id/third_image"
-        android:layout_width="114dp"
-        android:layout_height="125dp"
-        android:layout_alignBottom="@+id/third_text"
-        android:layout_toStartOf="@+id/third_text"
-        android:src="@drawable/app_icon" />
-
-
-    <TextView
-        android:id="@+id/third_text"
-        android:layout_width="269dp"
-        android:layout_height="120dp"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/second_text"
-        android:layout_marginTop="19dp"
-        android:gravity="center"
-        android:text="asdf"
-        android:textSize="20dp" />
-
-
-
-
-
-
-
+    <android.support.v7.widget.RecyclerView
+        app:layoutManager="LinearLayoutManager"
+        android:id="@+id/beacon_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </RelativeLayout>

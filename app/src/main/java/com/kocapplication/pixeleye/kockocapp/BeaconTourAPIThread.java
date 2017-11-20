@@ -7,6 +7,8 @@ import android.util.Log;
 
 import com.kocapplication.pixeleye.kockocapp.model.TourData;
 
+import java.util.ArrayList;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.GsonConverterFactory;
@@ -16,6 +18,11 @@ import retrofit2.Retrofit;
 /**
  * Created by Pixeleye_server on 2017-11-15.
  */
+
+//인증키
+//%2FPY%2FrC05SWjkibjwVdcdM9oEFIigSw3ePTOzJRtbCB3Li5gdZVTDZkYG5A1U4fah%2BvyfFw%2BGIGkeE3gpg3EaPQ%3D%3D
+//타입
+//&_type=json
 
 public class BeaconTourAPIThread extends Thread {
     private final static String TAG = "BeaconTourAPIThread";

@@ -152,6 +152,8 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".beaconlist"
             android:screenOrientation="portrait"/>
+        <activity android:name=".BeaconTourDetailActivity"
+            android:screenOrientation="portrait"/>
 
 
         <!-- 네이버 로그인-->

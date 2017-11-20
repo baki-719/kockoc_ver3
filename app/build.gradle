@@ -33,6 +33,7 @@ android {
     }
     configurations {
         all*.exclude group: 'org.apache.commons'
+        all*.exclude module: 'httpclient'
     }
 
 }

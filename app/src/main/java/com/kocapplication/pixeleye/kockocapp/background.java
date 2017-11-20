@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.support.v7.app.NotificationCompat;
+import android.text.format.Time;
 import android.util.Log;
 
 import com.estimote.sdk.Beacon;
@@ -18,6 +19,7 @@ import com.estimote.sdk.Region;
 import com.estimote.sdk.eddystone.Eddystone;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.UUID;
 
@@ -30,7 +32,6 @@ public class background extends Service {
     private static final String TAG = "background";
 
     private BeaconManager beaconManager;
-    private ArrayList<Beacon> myBeacon;
     private ArrayList<Eddystone> myEddystone;
     public int[] flag = new int[]{0, 0, 0, 0, 0};
 
@@ -74,8 +75,6 @@ public class background extends Service {
         beaconManager = new BeaconManager(getApplicationContext());
 
         beaconManagerConnect();
-        // TODO: 2017-11-16 http://developer.estimote.com/managing-beacons/connecting-to-beacons/#android 참고
-        //// TODO: 2017-11-14 eddystone을 백그라운드로 돌림 왜 되는지는 모름
         beaconManager.setEddystoneListener(new BeaconManager.EddystoneListener() {
             @Override
             public void onEddystonesFound(List<Eddystone> list) {
@@ -83,6 +82,8 @@ public class background extends Service {
                 ArrayList<CustomUrl> urls = new ArrayList<CustomUrl>();
                 for (int i = 0; i < myEddystone.size(); i++) {
                     Log.d(TAG, "scaned beacon :" + list.get(i).url);
+                    Log.d(TAG, "mac : "+ list.get(i).macAddress);
+                    Log.d(TAG, "time : " + Calendar.getInstance().getTime().toString());
                     for (int j = 0; j < BeaconMacAddressList.getInstance().getMacAddresses().length; j++) {
                         if (myEddystone.get(i).macAddress.toString().equals(BeaconMacAddressList.getInstance().getMacAddresses()[j])) {
                             urls.add(new CustomUrl(myEddystone.get(i).url));
@@ -103,8 +104,8 @@ public class background extends Service {
             @Override
             public void onServiceReady() {
                 beaconManager.startEddystoneScanning();
-                beaconManager.setBackgroundScanPeriod(10000, 0);
-                beaconManager.setForegroundScanPeriod(10000, 0);
+                beaconManager.setBackgroundScanPeriod(5000, 0);
+                beaconManager.setForegroundScanPeriod(5000, 0);
             }
         });
     }
