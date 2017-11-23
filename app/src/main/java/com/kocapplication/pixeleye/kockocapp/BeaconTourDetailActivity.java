@@ -2,8 +2,6 @@ package com.kocapplication.pixeleye.kockocapp;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.annotation.Nullable;
 import android.text.Html;
 import android.view.View;
@@ -14,10 +12,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.kocapplication.pixeleye.kockocapp.main.BaseActivityWithoutNav;
-import com.kocapplication.pixeleye.kockocapp.main.tour.TourDetailActivity;
-import com.kocapplication.pixeleye.kockocapp.main.tour.retrofit.TourDetailThread;
 import com.kocapplication.pixeleye.kockocapp.model.TourData;
-import com.kocapplication.pixeleye.kockocapp.model.TourDetailData;
 
 /**
  * Created by Pixeleye_server on 2017-11-20.

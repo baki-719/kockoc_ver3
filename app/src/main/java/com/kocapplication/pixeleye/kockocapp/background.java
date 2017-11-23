@@ -36,7 +36,6 @@ public class background extends Service {
     public int[] flag = new int[]{0, 0, 0, 0, 0};
 
 
-
     @Override
     public void onCreate() {
         super.onCreate();
@@ -47,7 +46,6 @@ public class background extends Service {
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
-
 
         return null;
     }
@@ -104,8 +102,8 @@ public class background extends Service {
             @Override
             public void onServiceReady() {
                 beaconManager.startEddystoneScanning();
-                beaconManager.setBackgroundScanPeriod(5000, 0);
-                beaconManager.setForegroundScanPeriod(5000, 0);
+                beaconManager.setBackgroundScanPeriod(10000, 2000);
+                beaconManager.setForegroundScanPeriod(10000, 2000);
             }
         });
     }

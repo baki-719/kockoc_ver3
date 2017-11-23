@@ -2,7 +2,11 @@ package com.kocapplication.pixeleye.kockocapp.login.Kakao;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 
 import com.kakao.auth.ErrorCode;
@@ -18,6 +22,8 @@ import com.kocapplication.pixeleye.kockocapp.main.MainActivity;
 import com.kocapplication.pixeleye.kockocapp.model.User;
 import com.kocapplication.pixeleye.kockocapp.util.connect.BasicValue;
 import com.kocapplication.pixeleye.kockocapp.util.connect.JspConn;
+
+import java.security.MessageDigest;
 
 /**
  * Created by hp on 2016-06-21.
@@ -39,7 +45,27 @@ public class KakaoSignupActivity extends Activity {
         getBoardNo = intent.getIntExtra("boardNo",0);
         getCourseNo = intent.getIntExtra("courseNo",0);
         requestMe();
+        getAppKeyHash();
     }
+    /**
+     * hash key
+     */
+    private void getAppKeyHash() {
+        try {
+            PackageInfo info = getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures) {
+                MessageDigest md;
+                md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                String something = new String(Base64.encode(md.digest(), 0));
+                Log.d("Hash key", something);
+            }
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            Log.e("name not found", e.toString());
+        }
+    }
+
     /**
      * 사용자의 상태를 알아 보기 위해 me API 호출을 한다.
      */

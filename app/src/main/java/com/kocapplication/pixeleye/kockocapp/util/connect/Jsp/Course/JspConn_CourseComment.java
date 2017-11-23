@@ -25,7 +25,6 @@ import java.util.List;
 
 public class JspConn_CourseComment extends JspConn {
     final static String TAG = JspConn_CourseComment.class.getSimpleName();
-    //코스댓글 받아옴
     static public String courseComment(int courseNo) {
         String result = "";
         try {
