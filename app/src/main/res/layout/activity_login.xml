@@ -78,7 +78,7 @@
 
         </RelativeLayout>
 
-        <com.kocapplication.pixeleye.kockocapp.login.LoginButton
+        <com.kocapplication.pixeleye.kockoc.login.LoginButton
             android:id="@+id/login_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -95,7 +95,7 @@
             android:paddingTop="5dp"
             android:weightSum="2">
 
-            <com.kocapplication.pixeleye.kockocapp.login.LoginButton
+            <com.kocapplication.pixeleye.kockoc.login.LoginButton
                 android:id="@+id/facebook_login_button_temp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -108,7 +108,7 @@
                 app:textColor="@color/white"
                 android:visibility="gone"/>
 
-            <com.kocapplication.pixeleye.kockocapp.login.LoginButton
+            <com.kocapplication.pixeleye.kockoc.login.LoginButton
                 android:id="@+id/naver_login_button_temp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -122,7 +122,7 @@
 
         </LinearLayout>
 
-        <com.kocapplication.pixeleye.kockocapp.login.LoginButton
+        <com.kocapplication.pixeleye.kockoc.login.LoginButton
             android:id="@+id/kakao_login_button_temp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
