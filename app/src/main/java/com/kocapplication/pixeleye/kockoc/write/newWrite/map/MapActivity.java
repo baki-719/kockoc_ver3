@@ -21,15 +21,14 @@ import android.widget.Toast;
 
 import com.kocapplication.pixeleye.kockoc.R;
 import com.kocapplication.pixeleye.kockoc.main.BaseActivityWithoutNav;
-import com.kocapplication.pixeleye.kockoc.util.connect.BasicValue;
 import com.kocapplication.pixeleye.kockoc.util.EnterListener;
+import com.kocapplication.pixeleye.kockoc.util.connect.BasicValue;
 import com.kocapplication.pixeleye.kockoc.util.map.GpsInfo;
 import com.kocapplication.pixeleye.kockoc.util.map.Item;
 import com.kocapplication.pixeleye.kockoc.util.map.OnFinishSearchListener;
 import com.kocapplication.pixeleye.kockoc.util.map.Searcher;
 
 import net.daum.mf.map.api.CameraUpdateFactory;
-import net.daum.mf.map.api.MapLayout;
 import net.daum.mf.map.api.MapPOIItem;
 import net.daum.mf.map.api.MapPoint;
 import net.daum.mf.map.api.MapPointBounds;
@@ -152,11 +151,6 @@ public class MapActivity extends BaseActivityWithoutNav
     };
 
     private void searchMap(String text) {
-//        MapPoint.GeoCoordinate geoCoordinate = daumMap.getMapCenterPoint().getMapPointGeoCoord();
-//
-//        double latitude = geoCoordinate.latitude; // 위도
-//        double longitude = geoCoordinate.longitude; // 경도
-//        int radius = 10000; // 중심 좌표부터의 반경거리. 특정 지역을 중심으로 검색하려고 할 경우 사용. meter 단위 (0 ~ 10000)
         int page = 1;
 
         String apiKey = BasicValue.getInstance().getDAUM_MAP_API_KEY();

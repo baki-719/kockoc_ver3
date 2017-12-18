@@ -1,5 +1,6 @@
 package com.kocapplication.pixeleye.kockoc.intro;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -17,13 +18,17 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Base64;
 import android.util.Log;
+import android.widget.Toast;
 
+import com.gun0912.tedpermission.PermissionListener;
+import com.gun0912.tedpermission.TedPermission;
 import com.kocapplication.pixeleye.kockoc.R;
 import com.kocapplication.pixeleye.kockoc.login.LoginActivity;
 import com.kocapplication.pixeleye.kockoc.main.MainActivity;
 import com.kocapplication.pixeleye.kockoc.util.connect.BasicValue;
 
 import java.security.MessageDigest;
+import java.util.ArrayList;
 
 /**
  * Created by pixeleye02 on 2016-06-27.
@@ -34,6 +39,13 @@ public class IntroActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
+
+        TedPermission.with(this)
+                .setPermissionListener(permissionlistener)
+                .setPermissions()
+                .setDeniedMessage("If you reject permission,you can not use this service\n\nPlease turn on permissions at [Setting] > [Permission]")
+                .setPermissions(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION)
+                .check();
 
         try {
             PackageInfo info = getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_SIGNATURES);
@@ -55,7 +67,6 @@ public class IntroActivity extends Activity {
         try {
             autoLogin();
         } catch (Exception e) {
-            Log.e("intro", "intro network not connect");
             AlertDialog.Builder dialog = new AlertDialog.Builder(this);
             dialog.setTitle("안내");
             dialog.setMessage("인터넷 연결상태를 확인해주세요");
@@ -69,21 +80,6 @@ public class IntroActivity extends Activity {
             e.printStackTrace();
         }
 
-//        if (wifi.isConnected() || mobile.isConnected()) { // 와이파이에 연결된 경우
-//            autoLogin();
-//        } else { // 인터넷에 연결되지 않은 경우
-//            Log.e("intro", "intro network not connect");
-//            AlertDialog.Builder dialog = new AlertDialog.Builder(this);
-//            dialog.setTitle("안내");
-//            dialog.setMessage("인터넷 연결상태를 확인해주세요");
-//            dialog.setPositiveButton("예", new DialogInterface.OnClickListener() {
-//                @Override
-//                public void onClick(DialogInterface dialog, int which) {
-//                    finish();
-//                }
-//            });
-//            dialog.show();
-//        }
     }
 
     private void autoLogin() {
@@ -119,6 +115,18 @@ public class IntroActivity extends Activity {
         };
         handler.sendEmptyMessageDelayed(0, 2000);
     }
+
+    PermissionListener permissionlistener = new PermissionListener() {
+        @Override
+        public void onPermissionGranted() {
+        }
+
+        @Override
+        public void onPermissionDenied(ArrayList<String> deniedPermissions) {
+        }
+
+
+    };
 
     @Override
     protected void onResume() {

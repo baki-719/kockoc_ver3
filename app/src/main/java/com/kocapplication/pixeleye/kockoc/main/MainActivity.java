@@ -1,5 +1,6 @@
 package com.kocapplication.pixeleye.kockoc.main;
 
+import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -11,7 +12,10 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.gun0912.tedpermission.PermissionListener;
+import com.gun0912.tedpermission.TedPermission;
 import com.kocapplication.pixeleye.kockoc.R;
 import com.kocapplication.pixeleye.kockoc.detail.DetailActivity;
 import com.kocapplication.pixeleye.kockoc.main.course.CourseFragment;
@@ -186,33 +190,6 @@ public class MainActivity extends BaseActivity {
         startActivity(detail_intent);
     }
 
-
-//    /**
-//     * getInstanceIdToken
-//     * Gcm Token값 DB에 저장
-//     */
-//    public void getInstanceIdToken() {
-//        if (checkPlayServices(this)) {
-//            // Start IntentService to register this application with GCM.
-//            Intent intent = new Intent(this, MyInstanceIDListenerService.class);
-//            startService(intent);
-//        }
-//    }
-//
-//    private boolean checkPlayServices(Context context) { // gcm 사용을 위해서는 구글 플레이 서비스가 있어야 한다.
-//        int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(context);
-//        if (resultCode != ConnectionResult.SUCCESS) {
-//            if (GooglePlayServicesUtil.isUserRecoverableError(resultCode)) {
-//                GooglePlayServicesUtil.getErrorDialog(resultCode, this,
-//                        PLAY_SERVICES_RESOLUTION_REQUEST).show();
-//            } else {
-//                Log.i("LoginActivityTest", "This device is not supported.");
-//                finish();
-//            }
-//            return false;
-//        }
-//        return true;
-//    }
 
 
     public MainFragment getMainFragment() {

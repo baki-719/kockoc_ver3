@@ -14,8 +14,8 @@ android {
         applicationId "com.kocapplication.pixeleye.kockoc"
         minSdkVersion 17
         targetSdkVersion 23
-        versionCode 27
-        versionName "3.02"
+        versionCode 28
+        versionName "3.03"
         multiDexEnabled true
     }
     buildTypes {
@@ -75,6 +75,8 @@ dependencies {
     //estimote
     compile 'com.estimote:sdk:0.9.4@aar'
     implementation files('jniLibs/lib.jar')
+    //TedPermission
+    compile 'gun0912.ted:tedpermission:2.1.0'
 }
 
 apply plugin: 'com.google.gms.google-services'

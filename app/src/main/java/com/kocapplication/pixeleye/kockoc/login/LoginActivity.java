@@ -110,8 +110,8 @@ public class LoginActivity extends AppCompatActivity {
         } else if (loginStateByFacebook == true) {
             facebookCallBack();
             facebookButton.performClick();
-        }
-        else { return;}
+            finish();
+        } else { return;}
     }
 
     @Override
@@ -178,8 +178,6 @@ public class LoginActivity extends AppCompatActivity {
 
         oAuthLogin = OAuthLogin.getInstance();
         oAuthLogin.init(LoginActivity.this, "DJy3asjXdzqH_xK5WNt4", "QEpiUBFAQb", "KocKoc");
-
-
 
     }
 
@@ -254,6 +252,7 @@ public class LoginActivity extends AppCompatActivity {
             //soft keyboard hide
             InputMethodManager manager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
             manager.hideSoftInputFromWindow(v.getWindowToken(), 0);
+            finish();
         }
     }
 
@@ -418,30 +417,4 @@ public class LoginActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-//    /**
-//     * getInstanceIdToken
-//     * Gcm Token값 DB에 저장
-//     */
-//    public void getInstanceIdToken() {
-//        if (checkPlayServices(this)) {
-//            // Start IntentService to register this application with GCM.
-//            Intent intent = new Intent(this, RegistrationIntentService.class);
-//            startService(intent);
-//        }
-//    }
-//
-//    private boolean checkPlayServices(Context context) { // gcm 사용을 위해서는 구글 플레이 서비스가 있어야 한다.
-//        int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(context);
-//        if (resultCode != ConnectionResult.SUCCESS) {
-//            if (GooglePlayServicesUtil.isUserRecoverableError(resultCode)) {
-//                GooglePlayServicesUtil.getErrorDialog(resultCode, this,
-//                        PLAY_SERVICES_RESOLUTION_REQUEST).show();
-//            } else {
-//                Log.i("LoginActivityTest", "This device is not supported.");
-//                finish();
-//            }
-//            return false;
-//        }
-//        return true;
-//    }
 }
